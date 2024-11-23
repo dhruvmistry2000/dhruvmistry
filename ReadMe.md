@@ -1,8 +1,8 @@
-# Personal Portfolio Website Template
+# My Intro
 
 ## Description
 
-This is my personal portfolio website template, customized from the LUTHER template. It showcases my professional background, projects, and skills in a modern and stylish way. The site features sections for my work experience, technical abilities, and contact information. Feel free to explore my projects and get in touch!
+This is my personal introduction, showcasing my professional background, projects, and skills in a modern and stylish way. The site features sections for my work experience, technical abilities, and contact information. Feel free to explore my projects and get in touch!
 
 ## License
 
