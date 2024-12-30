@@ -1,4 +1,6 @@
+[![pages-build-deployment](https://github.com/dhruvmistry2000/dhruvmistry/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/dhruvmistry2000/dhruvmistry/actions/workflows/pages/pages-build-deployment)
 # My Intro
+
 
 ## Description
 
