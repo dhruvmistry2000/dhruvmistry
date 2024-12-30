@@ -1,6 +1,6 @@
 [![pages-build-deployment](https://github.com/dhruvmistry2000/dhruvmistry/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/dhruvmistry2000/dhruvmistry/actions/workflows/pages/pages-build-deployment)
+[![Build and Push Docker Image](https://github.com/dhruvmistry2000/dhruvmistry/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/dhruvmistry2000/dhruvmistry/actions/workflows/docker-publish.yml)
 # My Intro
-
 
 ## Description
 
