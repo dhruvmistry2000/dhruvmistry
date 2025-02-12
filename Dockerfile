@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 WORKDIR /usr/share/nginx/html
 
-ONBUILD COPY . .
+COPY . .
 
 EXPOSE 80
 
