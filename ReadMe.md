@@ -9,10 +9,7 @@
 </p>
 </p>
 <p align="center">
-    <img src="https://img.shields.io/github/license/dhruvmistry2000/dhruvmistry?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
     <img src="https://img.shields.io/github/last-commit/dhruvmistry2000/dhruvmistry?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-    <img src="https://img.shields.io/github/languages/top/dhruvmistry2000/dhruvmistry?style=default&color=0080ff" alt="repo-top-language">
-    <img src="https://img.shields.io/github/languages/count/dhruvmistry2000/dhruvmistry?style=default&color=0080ff" alt="repo-language-count">
 </p>
 <p align="center"><!-- default option, no dependency badges. -->
 </p>
