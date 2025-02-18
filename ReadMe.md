@@ -20,10 +20,10 @@
 
 ##  Table of Contents
 
--Overview
--Features
--Project Structure
-  -Project Index
+- Overview
+- Features
+- Project Structure
+  - Project Index
 
 
 
