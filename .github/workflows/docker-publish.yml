@@ -25,7 +25,7 @@ jobs:
 
       - name: Test the Docker image
         run: |
-          docker run -p 80:80 dhruvmistry200/mywebsite:latest
+          docker run -itd -p 80:80 dhruvmistry200/mywebsite:latest
 
       - name: Push the Docker image
         run: |
