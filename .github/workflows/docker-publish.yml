@@ -23,6 +23,10 @@ jobs:
         run: |
           docker build -t dhruvmistry200/mywebsite:latest .
 
+      - name: Test the Docker image
+        run: |
+          docker run -p 80:80 dhruvmistry200/mywebsite:latest
+
       - name: Push the Docker image
         run: |
           docker push dhruvmistry200/mywebsite:latest
