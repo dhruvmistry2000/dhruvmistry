@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      IMAGE_TAG: ghcr.io/${{ github.actor }}/mywebsite:latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -22,12 +25,12 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build -t ghcr.io/${{ github.actor }}/mywebsite:latest .
+          docker build -t $IMAGE_TAG .
 
       - name: Test the Docker image
         run: |
-          docker run -itd -p 80:80 ghcr.io/${{ github.actor }}/mywebsite:latest
+          docker run -itd -p 80:80 $IMAGE_TAG
 
       - name: Push the Docker image to GHCR
         run: |
-          docker push ghcr.io/${{ github.actor }}/mywebsite:latest
+          docker push $IMAGE_TAG

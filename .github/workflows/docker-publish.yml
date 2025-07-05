@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      IMAGE_TAG: dhruvmistry200/mywebsite:latest  # Change this to your Docker Hub repository
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,12 +24,12 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build -t dhruvmistry200/mywebsite:latest .
+          docker build -t $IMAGE_TAG .
 
       - name: Test the Docker image
         run: |
-          docker run -itd -p 80:80 dhruvmistry200/mywebsite:latest
+          docker run -itd -p 80:80 $IMAGE_TAG
 
       - name: Push the Docker image
         run: |
-          docker push dhruvmistry200/mywebsite:latest
+          docker push $IMAGE_TAG
