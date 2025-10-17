@@ -3,18 +3,25 @@ name: Build and Push Docker Image to GHCR
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE_TAG: ghcr.io/${{ github.actor }}/mywebsite:latest
+      IMAGE_NAME: ghcr.io/${{ github.actor }}/mywebsite
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Docker tags
+        id: tags
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
+          echo "TAGS=${{ env.IMAGE_NAME }}:latest,${{ env.IMAGE_NAME }}:$SHORT_SHA" >> $GITHUB_ENV
 
       - name: Log in to GHCR
         uses: docker/login-action@v2
@@ -23,14 +30,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.PAT }}
 
-      - name: Build the Docker image
+      - name: Build Docker image with both tags
         run: |
-          docker build -t $IMAGE_TAG .
+          docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:$SHORT_SHA .
 
-      - name: Test the Docker image
+      - name: Test the Docker image (optional)
         run: |
-          docker run -itd -p 80:80 $IMAGE_TAG
+          docker run -d -p 80:80 $IMAGE_NAME:latest
 
-      - name: Push the Docker image to GHCR
+      - name: Push both Docker tags to GHCR
         run: |
-          docker push $IMAGE_TAG
+          docker push $IMAGE_NAME:latest
+          docker push $IMAGE_NAME:$SHORT_SHA
