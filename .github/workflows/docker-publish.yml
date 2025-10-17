@@ -3,14 +3,14 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  # Change this to your default branch if it's not 'main'
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE_TAG: dhruvmistry200/mywebsite:latest  # Change this to your Docker Hub repository
+      IMAGE_TAG: dhruvmistry200/mywebsite:latest 
 
     steps:
       - name: Checkout code
