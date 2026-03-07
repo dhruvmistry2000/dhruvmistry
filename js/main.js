@@ -1,364 +1,305 @@
-/* ===================================================================
- * Luther 1.0.0 - Main JS
- *
- * ------------------------------------------------------------------- */
-
-(function(html) {
-
-    "use strict";
-
-    html.className = html.className.replace(/\bno-js\b/g, '') + ' js ';
-
-
-
-   /* Animations
-    * -------------------------------------------------- */
-    const tl = anime.timeline( {
-        easing: 'easeInOutCubic',
-        duration: 800,
-        autoplay: false
-    })
-    .add({
-        targets: '#loader',
-        opacity: 0,
-        duration: 1000,
-        begin: function(anim) {
-            window.scrollTo(0, 0);
-        }
-    })
-    .add({
-        targets: '#preloader',
-        opacity: 0,
-        complete: function(anim) {
-            document.querySelector("#preloader").style.visibility = "hidden";
-            document.querySelector("#preloader").style.display = "none";
-        }
-    })
-    .add({
-        targets: '.s-header',
-        translateY: [-100, 0],
-        opacity: [0, 1]
-    }, '-=200')
-    .add({
-        targets: [ '.s-intro .text-pretitle', '.s-intro .text-huge-title'],
-        translateX: [100, 0],
-        opacity: [0, 1],
-        delay: anime.stagger(400)
-    })
-    .add({
-        targets: '.circles span',
-        keyframes: [
-            {opacity: [0, .3]},
-            {opacity: [.3, .1], delay: anime.stagger(100, {direction: 'reverse'})}
-        ],
-        delay: anime.stagger(100, {direction: 'reverse'})
-    })
-    .add({
-        targets: '.intro-social li',
-        translateX: [-50, 0],
-        opacity: [0, 1],
-        delay: anime.stagger(100, {direction: 'reverse'})
-    })
-    .add({
-        targets: '.intro-scrolldown',
-        translateY: [100, 0],
-        opacity: [0, 1]
-    }, '-=800');
-
-
-
-   /* Preloader
-    * -------------------------------------------------- */
-    const ssPreloader = function() {
-
-        const preloader = document.querySelector('#preloader');
-        if (!preloader) return;
-        
-        window.addEventListener('load', function() {
-            document.querySelector('html').classList.remove('ss-preload');
-            document.querySelector('html').classList.add('ss-loaded');
-
-            document.querySelectorAll('.ss-animated').forEach(function(item){
-                item.classList.remove('ss-animated');
-            });
-
-            tl.play();
-        });
-
-        // force page scroll position to top at page refresh
-        // window.addEventListener('beforeunload' , function () {
-        //     // window.scrollTo(0, 0);
-        // });
-
-    }; // end ssPreloader
-
-
-   /* Mobile Menu
-    * ---------------------------------------------------- */ 
-    const ssMobileMenu = function() {
-
-        const toggleButton = document.querySelector('.mobile-menu-toggle');
-        const mainNavWrap = document.querySelector('.main-nav-wrap');
-        const siteBody = document.querySelector("body");
-
-        if (!(toggleButton && mainNavWrap)) return;
-
-        toggleButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            toggleButton.classList.toggle('is-clicked');
-            siteBody.classList.toggle('menu-is-open');
-        });
-
-        mainNavWrap.querySelectorAll('.main-nav a').forEach(function(link) {
-            link.addEventListener("click", function(event) {
-
-                // at 800px and below
-                if (window.matchMedia('(max-width: 800px)').matches) {
-                    toggleButton.classList.toggle('is-clicked');
-                    siteBody.classList.toggle('menu-is-open');
-                }
-            });
-        });
-
-        window.addEventListener('resize', function() {
-
-            // above 800px
-            if (window.matchMedia('(min-width: 801px)').matches) {
-                if (siteBody.classList.contains('menu-is-open')) siteBody.classList.remove('menu-is-open');
-                if (toggleButton.classList.contains("is-clicked")) toggleButton.classList.remove("is-clicked");
-            }
-        });
-
-    }; // end ssMobileMenu
-
-
-   /* Highlight active menu link on pagescroll
-    * ------------------------------------------------------ */
-    const ssScrollSpy = function() {
-
-        const sections = document.querySelectorAll(".target-section");
-
-        // Add an event listener listening for scroll
-        window.addEventListener("scroll", navHighlight);
-
-        function navHighlight() {
-        
-            // Get current scroll position
-            let scrollY = window.pageYOffset;
-        
-            // Loop through sections to get height(including padding and border), 
-            // top and ID values for each
-            sections.forEach(function(current) {
-                const sectionHeight = current.offsetHeight;
-                const sectionTop = current.offsetTop - 50;
-                const sectionId = current.getAttribute("id");
-            
-               /* If our current scroll position enters the space where current section 
-                * on screen is, add .current class to parent element(li) of the thecorresponding 
-                * navigation link, else remove it. To know which link is active, we use 
-                * sectionId variable we are getting while looping through sections as 
-                * an selector
-                */
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelector(".main-nav a[href*=" + sectionId + "]").parentNode.classList.add("current");
-                } else {
-                    document.querySelector(".main-nav a[href*=" + sectionId + "]").parentNode.classList.remove("current");
-                }
-            });
-        }
-
-    }; // end ssScrollSpy
-
-
-   /* Animate elements if in viewport
-    * ------------------------------------------------------ */
-    const ssViewAnimate = function() {
-
-        const blocks = document.querySelectorAll("[data-animate-block]");
-
-        window.addEventListener("scroll", viewportAnimation);
-
-        function viewportAnimation() {
-
-            let scrollY = window.pageYOffset;
-
-            blocks.forEach(function(current) {
-
-                const viewportHeight = window.innerHeight;
-                const triggerTop = (current.offsetTop + (viewportHeight * .2)) - viewportHeight;
-                const blockHeight = current.offsetHeight;
-                const blockSpace = triggerTop + blockHeight;
-                const inView = scrollY > triggerTop && scrollY <= blockSpace;
-                const isAnimated = current.classList.contains("ss-animated");
-
-                if (inView && (!isAnimated)) {
-                    anime({
-                        targets: current.querySelectorAll("[data-animate-el]"),
-                        opacity: [0, 1],
-                        translateY: [100, 0],
-                        delay: anime.stagger(400, {start: 200}),
-                        duration: 800,
-                        easing: 'easeInOutCubic',
-                        begin: function(anim) {
-                            current.classList.add("ss-animated");
-                        }
-                    });
-                }
-            });
-        }
-
-    }; // end ssViewAnimate
-
-
-   /* Swiper
-    * ------------------------------------------------------ */ 
-    const ssSwiper = function() {
-
-        const mySwiper = new Swiper('.swiper-container', {
-
-            slidesPerView: 1,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                // when window width is > 400px
-                401: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                // when window width is > 800px
-                801: {
-                    slidesPerView: 2,
-                    spaceBetween: 32
-                },
-                // when window width is > 1200px
-                1201: {
-                    slidesPerView: 2,
-                    spaceBetween: 80
-                }
-            }
-         });
-
-    }; // end ssSwiper
-
-
-   /* Lightbox
-    * ------------------------------------------------------ */
-    const ssLightbox = function() {
-
-        const folioLinks = document.querySelectorAll('.folio-list__item-link');
-        const modals = [];
-
-        folioLinks.forEach(function(link) {
-            let modalbox = link.getAttribute('href');
-            let instance = basicLightbox.create(
-                document.querySelector(modalbox),
-                {
-                    onShow: function(instance) {
-                        //detect Escape key press
-                        document.addEventListener("keydown", function(event) {
-                            event = event || window.event;
-                            if (event.keyCode === 27) {
-                                instance.close();
-                            }
-                        });
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { DEFAULT: '#0a0a0f', navy: '#0d1117' },
+                        accent: { green: '#00ff88', cyan: '#00d4ff' }
+                    },
+                    fontFamily: {
+                        mono: ['HackNerdFont', 'Courier New', 'monospace'],
+                        sans: ['HackNerdFont', 'Courier New', 'monospace']
                     }
                 }
-            )
-            modals.push(instance);
-        });
-
-        folioLinks.forEach(function(link, index) {
-            link.addEventListener("click", function(event) {
-                event.preventDefault();
-                modals[index].show();
-            });
-        });
-
-    };  // end ssLightbox
-
-
-   /* Alert boxes
-    * ------------------------------------------------------ */
-    const ssAlertBoxes = function() {
-
-        const boxes = document.querySelectorAll('.alert-box');
-  
-        boxes.forEach(function(box){
-
-            box.addEventListener('click', function(event) {
-                if (event.target.matches(".alert-box__close")) {
-                    event.stopPropagation();
-                    event.target.parentElement.classList.add("hideit");
-
-                    setTimeout(function(){
-                        box.style.display = "none";
-                    }, 500)
-                }    
-            });
-
-        })
-
-    }; // end ssAlertBoxes
-
-
-   /* Smoothscroll
-    * ------------------------------------------------------ */
-    const ssMoveTo = function(){
-
-        const easeFunctions = {
-            easeInQuad: function (t, b, c, d) {
-                t /= d;
-                return c * t * t + b;
-            },
-            easeOutQuad: function (t, b, c, d) {
-                t /= d;
-                return -c * t* (t - 2) + b;
-            },
-            easeInOutQuad: function (t, b, c, d) {
-                t /= d/2;
-                if (t < 1) return c/2*t*t + b;
-                t--;
-                return -c/2 * (t*(t-2) - 1) + b;
-            },
-            easeInOutCubic: function (t, b, c, d) {
-                t /= d/2;
-                if (t < 1) return c/2*t*t*t + b;
-                t -= 2;
-                return c/2*(t*t*t + 2) + b;
             }
         }
 
-        const triggers = document.querySelectorAll('.smoothscroll');
-        
-        const moveTo = new MoveTo({
-            tolerance: 0,
-            duration: 1200,
-            easing: 'easeInOutCubic',
-            container: window
-        }, easeFunctions);
+        // Typewriter effect
+        const roles = ['DevOps Engineer', 'kubectl Enthusiast', 'Cloud Infrastructure Builder', 'Linux Tinkerer', 'Containerization Nerd', 'Hardware Hobbyist'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriter');
 
-        triggers.forEach(function(trigger) {
-            moveTo.registerTrigger(trigger);
+        function typeWriter() {
+            const current = roles[roleIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            let speed = isDeleting ? 50 : 80;
+            if (!isDeleting && charIndex === current.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                speed = 500;
+            }
+            setTimeout(typeWriter, speed);
+        }
+        typeWriter();
+
+        // Mobile menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = mobileMenu.querySelectorAll('a');
+
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+        }
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.add('open');
+        });
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        let revealObserver = null;
+
+        // Projects (dynamic from data/projects.json)
+        function buildProjectCard(p) {
+            const primaryUrl = (p.links && (p.links.dockerhub || p.links.github)) || '#';
+            const hasDockerhub = p.links && p.links.dockerhub;
+            const tagsHtml = (p.tags || []).map(t => `<span class="text-xs font-mono text-[#00ff88]">${escapeHtml(t)}</span>`).join('');
+            const cardClasses = 'project-card glass-card rounded-xl overflow-hidden reveal';
+            if (hasDockerhub) {
+                return `<article class="${cardClasses}">
+                    <a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener noreferrer" class="block">
+                        <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <div class="flex flex-wrap gap-2 mb-2">${tagsHtml}</div>
+                            <h3 class="font-mono font-bold text-white text-lg mb-2">${escapeHtml(p.title)}</h3>
+                            <p class="text-gray-400 text-sm mb-4">${escapeHtml(p.description)}</p>
+                        </div>
+                    </a>
+                    <div class="px-5 pb-5 flex gap-3">
+                        <a href="${escapeHtml(p.links.dockerhub)}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00ff88] transition-colors" title="Docker Hub"><i class="fab fa-docker text-[#00ff88]"></i></a>
+                        <a href="${escapeHtml(p.links.github)}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00ff88] transition-colors" title="GitHub"><i class="fab fa-github text-[#00ff88]"></i></a>
+                    </div>
+                </article>`;
+            }
+            return `<article class="${cardClasses}">
+                <a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener noreferrer" class="block">
+                    <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <div class="flex flex-wrap gap-2 mb-2">${tagsHtml}</div>
+                        <h3 class="font-mono font-bold text-white text-lg mb-2">${escapeHtml(p.title)}</h3>
+                        <p class="text-gray-400 text-sm mb-4">${escapeHtml(p.description)}</p>
+                        <div class="flex gap-3"><i class="fab fa-github text-[#00ff88]"></i></div>
+                    </div>
+                </a>
+            </article>`;
+        }
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+        async function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            try {
+                const res = await fetch('data/projects.json');
+                if (!res.ok) throw new Error('Fetch failed');
+                const projects = await res.json();
+                const visible = projects.filter(p => p.visible === true);
+                const sorted = [...visible].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+                grid.innerHTML = sorted.map(p => buildProjectCard(p)).join('');
+                document.querySelectorAll('#projects-grid .project-card').forEach((el, i) => {
+                    el.style.transitionDelay = `${i * 60}ms`;
+                });
+                if (revealObserver) {
+                    grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+                }
+            } catch (err) {
+                console.error('Failed to load projects', err);
+                grid.innerHTML = '<p class="error col-span-full py-8 text-center">Failed to load projects. Please try again.</p>';
+            }
+        }
+
+        async function renderTechStack() {
+            const grid = document.getElementById('techstack-grid');
+            try {
+                const res = await fetch('data/techstack.json');
+                if (!res.ok) throw new Error('Fetch failed');
+                const techs = await res.json();
+                const visible = techs.filter(t => t.visible === true);
+                grid.innerHTML = visible.map(t => `
+                    <div class="tech-tile reveal">
+                        <img src="${t.icon}" alt="${t.name}" />
+                        <span>${t.name}</span>
+                    </div>
+                `).join('');
+                document.querySelectorAll('#techstack-grid .tech-tile').forEach((el, i) => {
+                    el.style.transitionDelay = `${i * 40}ms`;
+                });
+                if (revealObserver) {
+                    grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+                }
+            } catch (err) {
+                console.error('Failed to load tech stack', err);
+                grid.innerHTML = '<p class="error col-span-full py-8 text-center">Failed to load tech stack. Please try again.</p>';
+            }
+        }
+
+        function buildTimelineCard(companyName, role, isLeft, options = {}) {
+            const { showCompanyHeader = false, showCompanyInCard = true } = options;
+            const promotedBadge = role.promoted === true ? '<span class="promoted-badge">↑ Promoted</span>' : '';
+
+            const companyHeaderHtml = showCompanyHeader ? `<h3 class="font-mono font-bold text-white text-lg mb-3">${escapeHtml(companyName)}</h3>` : '';
+            const companyInCardHtml = showCompanyInCard ? `<h3 class="font-mono font-bold text-white text-lg">${escapeHtml(companyName)}</h3>` : '';
+            const titleHtml = `<p class="text-[#00ff88] font-mono text-sm">${escapeHtml(role.title)}${promotedBadge ? ' ' + promotedBadge : ''}</p>`;
+            const dateHtml = `<p class="text-gray-500 text-sm mt-1">${escapeHtml(role.from)} – ${escapeHtml(role.to)}</p>`;
+
+            const cardHtml = `
+                <div class="timeline-card glass-card rounded-xl p-6 w-full reveal">
+                    ${companyInCardHtml}
+                    ${titleHtml}
+                    ${dateHtml}
+                </div>
+            `;
+
+            if (isLeft) {
+                return `
+                    <div class="timeline-item">
+                        <div class="timeline-left flex justify-end pl-4 md:pl-0 md:pr-4">
+                            <div class="w-full max-w-[calc(100%-2rem)] md:max-w-none">
+                                ${companyHeaderHtml}
+                                ${cardHtml}
+                            </div>
+                        </div>
+                        <div class="timeline-center">
+                            <div class="dot timeline-dot"></div>
+                        </div>
+                        <div class="timeline-right"></div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="timeline-item">
+                    <div class="timeline-left"></div>
+                    <div class="timeline-center">
+                        <div class="dot timeline-dot"></div>
+                    </div>
+                    <div class="timeline-right pl-4">
+                        <div class="w-full max-w-[calc(100%-2rem)] md:max-w-none">
+                            ${companyHeaderHtml}
+                            ${cardHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderExperience() {
+            const container = document.getElementById('experience-timeline');
+            try {
+                const res = await fetch('data/experience.json');
+                if (!res.ok) throw new Error('Fetch failed');
+                const companies = await res.json();
+                const visible = companies.filter(c => c.visible === true);
+
+                let itemIndex = 0;  // global counter for alternating left/right
+
+                container.innerHTML = visible.map(company => {
+                    const isMultiRole = Array.isArray(company.roles) && company.roles.length > 1;
+                    return (company.roles || []).map((role, roleIdx) => {
+                        const isLeft = itemIndex % 2 === 0;
+                        itemIndex++;
+                        return buildTimelineCard(company.company, role, isLeft, {
+                            showCompanyHeader: isMultiRole && roleIdx === 0,
+                            showCompanyInCard: !isMultiRole
+                        });
+                    }).join('');
+                }).join('');
+
+                if (revealObserver) {
+                    container.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+                }
+            } catch (err) {
+                console.error('Failed to load experience', err);
+                container.innerHTML = '<p class="error py-8 text-center">Failed to load experience. Please try again.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // IntersectionObserver for fade-in-up (existing sections)
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+            if (!prefersReducedMotion) {
+                revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            revealObserver.unobserve(entry.target); // animate once, never reverse
+                        }
+                    });
+                }, { threshold: 0.12 });
+                document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            }
+
+            function animateCounter(el) {
+                const target = parseInt(el.dataset.target);
+                const suffix = el.dataset.suffix || '';
+                const duration = 1200; // ms
+                const steps = 40;
+                const increment = target / steps;
+                let current = 0;
+                let step = 0;
+
+                const timer = setInterval(() => {
+                    step++;
+                    current = Math.min(Math.round(increment * step), target);
+                    el.textContent = current + suffix;
+                    if (step >= steps) clearInterval(timer);
+                }, duration / steps);
+            }
+
+            if (prefersReducedMotion) {
+                document.querySelectorAll('.stat-number').forEach(el => {
+                    const target = parseInt(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    el.textContent = target + suffix;
+                });
+            } else {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const counter = entry.target.querySelector('.stat-number');
+                            if (counter) animateCounter(counter);
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 }); // higher threshold — wait until card is well in view
+                document.querySelectorAll('.stat-card').forEach(el => statsObserver.observe(el));
+            }
+
+            renderProjects();
+            renderTechStack();
+            renderExperience();
         });
 
-    }; // end ssMoveTo
-
-
-   /* Initialize
-    * ------------------------------------------------------ */
-    (function ssInit() {
-
-        ssPreloader();
-        ssMobileMenu();
-        ssScrollSpy();
-        ssViewAnimate();
-        ssSwiper();
-        ssLightbox();
-        ssAlertBoxes();
-        ssMoveTo();
-
-    })();
-
-})(document.documentElement);
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });

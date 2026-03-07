@@ -1,772 +1,192 @@
 <!DOCTYPE html>
-<html class="no-js ss-preload" lang="en">
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhruv Mistry | DevOps Engineer</title>
+    <meta name="description" content="Dhruv Mistry - DevOps Engineer, Kubernetes Specialist, Cloud Infrastructure Builder">
+    <link rel="icon" href="images/letter-d.svg">
 
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Dhruv Mistry</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- favicons
-    ================================================== -->
-    <link rel="icon" href="images/letter-d.png">
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+<body class="antialiased">
+    <!-- Gradient blobs background -->
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
 
-<body id="top">
-
-
-    <!-- # preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader">
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#hero" class="font-mono text-lg font-semibold text-white flex items-center gap-1">
+                dhruv.sh<span class="cursor-blink"></span>
+            </a>
+            <ul class="hidden md:flex items-center gap-8">
+                <li><a href="#about" class="text-gray-400 hover:text-[#00ff88] transition-colors">About</a></li>
+                <li><a href="#skills" class="text-gray-400 hover:text-[#00ff88] transition-colors">Tech Stack</a></li>
+                <li><a href="#experience" class="text-gray-400 hover:text-[#00ff88] transition-colors">Experience</a></li>
+                <li><a href="#projects" class="text-gray-400 hover:text-[#00ff88] transition-colors">Projects</a></li>
+                <li><a href="#contact" class="text-gray-400 hover:text-[#00ff88] transition-colors">Contact</a></li>
+            </ul>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white p-2" aria-label="Toggle menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
-    </div>
-
-
-    <!-- # page wrap
-    ================================================== -->
-    <div class="s-pagewrap">
-
-        <div class="circles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <!-- Mobile menu overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 bottom-0 w-64 glass p-6 pt-20 z-50 md:hidden">
+            <ul class="space-y-4">
+                <li><a href="#about" class="block text-gray-400 hover:text-[#00ff88] py-2">About</a></li>
+                <li><a href="#skills" class="block text-gray-400 hover:text-[#00ff88] py-2">Tech Stack</a></li>
+                <li><a href="#experience" class="block text-gray-400 hover:text-[#00ff88] py-2">Experience</a></li>
+                <li><a href="#projects" class="block text-gray-400 hover:text-[#00ff88] py-2">Projects</a></li>
+                <li><a href="#contact" class="block text-gray-400 hover:text-[#00ff88] py-2">Contact</a></li>
+            </ul>
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
         </div>
-
-
-        <!-- ## site header 
-        ================================================== -->
-        <header class="s-header">
-
-            <div class="header-mobile">
-                <span class="mobile-home-link"><a href="index.html">Dhruv.</a></span>
-                <a class="mobile-menu-toggle" href="#0"><span>Menu</span></a>
-            </div>
-
-            <div class="row wide main-nav-wrap">
-                <nav class="column lg-12 main-nav">
-                    <ul>
-                        <li><a target="_blank" href="https://dhruvmistry2000.github.io/dhruvmistry/"
-                                class="home-link">Dhruv</a></li>
-                        <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
-                        <li><a href="#about" class="smoothscroll">About</a></li>
-                        <li><a href="#works" class="smoothscroll">Works</a></li>
-                        <li><a href="#contact" class="smoothscroll">Say Hello</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-        </header> <!-- end s-header -->
-
-
-        <!-- ## main content
-        ==================================================- -->
-        <main class="s-content">
-
-
-            <!-- ### intro
-            ================================================== -->
-            <section id="intro" class="s-intro target-section">
-
-                <div class="row intro-content wide">
-
-                    <div class="column">
-                        <div class="text-pretitle with-line">
-                            Hello World
-                        </div>
-
-                        <h1 class="text-huge-title">
-                            I am Dhruv Mistry, <br>
-                            a DevOps Engineer, <br>
-                            & a Linux User and Enthusiast <br>
-                        </h1>
-                    </div>
-                </div> <!-- end intro content -->
-
-                <a href="#about" class="intro-scrolldown smoothscroll">
-                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        fill-rule="evenodd" clip-rule="evenodd">
-                        <path
-                            d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z" />
-                    </svg>
-                </a>
-
-            </section> <!-- end s-intro -->
-
-
-            <!-- ### about
-            ================================================== -->
-            <section id="about" class="s-about target-section">
-
-
-                <div class="row about-info wide" data-animate-block>
-
-                    <div class="column lg-6 md-12 about-info__pic-block">
-                        <img src="images/dhruv.jpg" alt="" class="about-info__pic" data-animate-el>
-                    </div>
-
-                    <div class="column lg-6 md-12">
-                        <div class="about-info__text">
-
-                            <h2 class="text-pretitle with-line" data-animate-el>
-                                About
-                            </h2>
-                            <p class="attention-getter" data-animate-el>
-                                I am Dhruv Mistry, a Computer Science Engineering graduate and DevOps Engineer with hands-on experience in AWS, GCP, Docker, Kubernetes, and CI/​CD automation. I specialize in cloud infrastructure, and workflow optimization with a strong focus on scripting and containerization. Over the past year, I have transitioned into production-grade Kubernetes environments, gaining practical experience in cluster management, workload scaling, zero-downtime deployments, and resource optimization. I have developed a strong understanding of data safety, secrets management, backup strategies, and system reliability in live production systems. Passionate about open-source contributions and continuous learning, I actively build and share projects on GitHub, and I am eager to leverage my growing expertise in cloud-native technologies and DevOps practices to drive efficiency and innovation in modern infrastructure environments.
-                            </p>
-                            <a target="_blank" href="Dhruv.pdf" class="btn btn--medium u-fullwidth"
-                                data-animate-el>Download CV</a>
-
-                        </div>
-                    </div>
-                </div> <!-- about-info -->
-
-
-                <div class="row about-expertise" data-animate-block>
-                    <div class="column lg-12">
-
-                        <h2 class="text-pretitle" data-animate-el>Expertise</h2>
-
-                        <ul class="skills-list h1" data-animate-el>
-                            <li>Linux</li>
-                            <li>AWS</li>
-                            <li>GCP</li>
-                            <li>Docker</li>
-                            <li>Kubernetes</li>
-                            <li>Python</li>
-                            <li>Git</li>
-                            <li>Github</li>
-                            <li>Github Actions</li>
-                            <li>Jenkins</li>
-                            <li>Prometheus</li>
-                            <li>Grafana</li>
-                        </ul>
-
-                    </div>
-                </div> <!-- end about-expertise -->
-
-
-                <div class="row about-timelines" data-animate-block>
-
-                    <div class="column lg-6 tab-12">
-
-                        <h2 class="text-pretitle" data-animate-el>
-                            Experience
-                        </h2>
-
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Oneknotone Technologies LLP </h3>
-                                        <h5 class="timeline__meta">AWS Engineer</h5>
-                                        <p class="timeline__timeframe">May 2024 - February 2025</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p></p>
-                                </div>
-                            </div>
-
-                        </div> <!-- end timeline -->
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Pearlthoughts </h3>
-                                        <h5 class="timeline__meta">DevOps Engineer Intern</h5>
-                                        <p class="timeline__timeframe">May 2025 - August 2025</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p></p>
-                                </div>
-                            </div>
-
-                        </div> <!-- end timeline -->
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Pearlthoughts </h3>
-                                        <h5 class="timeline__meta">DevOps Engineer</h5>
-                                        <p class="timeline__timeframe">July 2025 - October 2025</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p></p>
-                                </div>
-                            </div>
-                            
-
-                        </div> <!-- end timeline -->
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Cleanstart </h3>
-                                        <h5 class="timeline__meta">Associate DevOps Engineer</h5>
-                                        <p class="timeline__timeframe">October 2025 - Present</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p></p>
-                                </div>
-                            </div>
-                            
-
-                        </div> <!-- end timeline -->
-
-                    </div> <!-- end column -->
-
-                    <div class="column lg-6 tab-12">
-
-                        <h2 class="text-pretitle" data-animate-el>
-                            Education
-                        </h2>
-
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Babaria Institute of Technology</h3>
-                                        <h5 class="timeline__meta">B.E Computer Science and Engineering</h5>
-                                        <p class="timeline__timeframe"></p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>At Babaria Institute of Technology, I completed my Bachelor of Engineering in
-                                        Computer Science and Engineering. The program offered a solid foundation in
-                                        programming and software development, with hands-on experience in well-equipped
-                                        labs. Supportive faculty fostered innovation through collaborative projects,
-                                        while internships provided valuable industry exposure. This experience has
-                                        thoroughly prepared me for a successful career in technology.</p>
-                                </div>
-                            </div>
-                        </div> <!-- end timeline -->
-
-                    </div> <!-- end column -->
-
-
-                </div> <!-- end about-timelines -->
-
-            </section> <!-- end s-about -->
-
-
-            <!-- ### works
-            ================================================== -->
-            <section id="works" class="s-works target-section">
-
-
-                <div class="row works-portfolio">
-
-                    <div class="column lg-12" data-animate-block>
-
-                        <h2 class="text-pretitle" data-animate-el>
-                            Recent Works
-                        </h2>
-                        <p class="h1" data-animate-el>
-                            Here are some of my favorite projects I have done lately. Feel free to check them out.
-                        </p>
-
-                        <ul class="folio-list row block-lg-one-half block-stack-on-1000">
-
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-01">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/mylinux1.webp" alt="">
-                                    </div>
-
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Github
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            Mylinux
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://github.com/dhruvmistry2000/mylinux" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-02">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/mybash1.png" alt="">
-                                    </div>
-
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Github
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            Mybash
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://github.com/dhruvmistry2000/mybash" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-03">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/doom.jpeg" alt="">
-                                    </div>
-
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Docker
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            Terminal Doom
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://hub.docker.com/r/dhruvmistry200/doom-terminal" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-04">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/kubernetes.png" alt="">
-                                    </div>
-
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Github
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            Mykubernetes
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://github.com/dhruvmistry2000/mykubernetes" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-
-
-
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-06">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/Medusa1.webp" alt="">
-                                    </div>
-
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Github
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            medus-storefront
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://github.com/dhruvmistry2000/medus-storefront" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-07">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/JSplusPY.png" alt="">
-                                    </div>
-
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Github
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            Web-Scraper
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://github.com/dhruvmistry2000/Web-scraper" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-08">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/strapi1.png" alt="">
-                                    </div>
-
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Github
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            Strapi-Deployment
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://github.com/dhruvmistry2000/Strapi-Deployment" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-05">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/kubernetes.png" alt="">
-                                    </div>
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Github
-                                        </div>
-                                        <div class="folio-list__item-title">
-                                            Kubepulse
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="folio-list__proj-link" target="_blank"
-                                    href="https://github.com/dhruvmistry2000/kubrulse]" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-                        </ul> <!-- end folio-list -->
-
-                    </div> <!-- end column -->
-
-
-                    <!-- Modal Templates Popup
-                    -------------------------------------------- -->
-                    <div id="modal-01" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/mylinux.png" alt="">
-
-                            <div class="modal-popup__desc">
-                                <h5>Mylinux</h5>
-                                <p>I have a minimal Linux setup using Arch Linux with BSPWM as my window manager for a
-                                    lightweight, tiling experience. This configuration allows for high customization and
-                                    efficiency in my workflow. I utilize essential tools like a terminal emulator and
-                                    text editor, optimizing performance to suit my needs. I also enjoy personalizing my
-                                    environment with various themes for a visually appealing workspace..</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Linux</li>
-                                    <li>Bash</li>
-                                </ul>
-                            </div>
-
-                            <a href="https://github.com/dhruvmistry2000/mylinux" target="_blank"
-                                class="modal-popup__details">Project
-                                link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-02" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/mybash.png" alt="">
-
-                            <div class="modal-popup__desc">
-                                <h5>Mybash</h5>
-                                <p>My GitHub project, **mybash**, is a collection of custom Bash scripts designed to
-                                    enhance productivity and streamline common tasks. The repository includes scripts
-                                    for automation, system monitoring, and environment setup, showcasing my programming
-                                    skills and understanding of shell scripting. Each script is well-documented for easy
-                                    use and modification. This project reflects my commitment to improving efficiency in
-                                    the Linux environment.</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Bash</li>
-                                </ul>
-                            </div>
-
-                            <a href="https://github.com/dhruvmistry2000/mybash" target="_blank"
-                                class="modal-popup__details">Project
-                                link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-03" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/doom2.jpeg" alt="" height="85%" width="100%">
-
-                            <div class="modal-popup__desc">
-                                <h5> Terminal-Doom</h5>
-                                <p>This project creates a Docker container that lets you play the classic game DOOM
-                                    right in your terminal! Built using Alpine Linux as a lightweight base image, it
-                                    demonstrates containerization principles while providing a fun, nostalgic gaming
-                                    experience. The container includes a pre-configured version of DOOM optimized for
-                                    terminal play, making it easy to spin up and start gaming anywhere Docker runs. This
-                                    project showcases both my Docker expertise and love for combining modern technology
-                                    with retro gaming. The implementation focuses on minimal resource usage while
-                                    maintaining full gameplay functionality.
-                                </p>
-
-                                <ul class="modal-popup__cat">
-                                    <li>Docker</li>
-                                    <li>Github</li>
-                                    <li>DockerHub</li>
-                                </ul>
-                            </div>
-                            <a href="https://hub.docker.com/r/dhruvmistry200/doom-terminal" target="_blank"
-                                class="modal-popup__details">Docker Hub Link</a>
-                            <a href="https://github.com/dhruvmistry2000/mydocker/tree/main/terminal-doom-alpine"
-                                class="modal-popup__details Github" target="_blank">Github</a>
-                        </div>
-                    </div> <!-- end modal -->
-                    <div id="modal-04" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/Kubernetes2.webp" alt="" height="85%" width="100%">
-
-                            <div class="modal-popup__desc">
-                                <h5> Mykubernetes</h5>
-                                <p>In my Kubernetes learning journey, I've created a comprehensive repository that
-                                    showcases my hands-on experience with various Kubernetes concepts. I've implemented
-                                    practical examples of ConfigMaps for application configuration, RBAC for access
-                                    control, monitoring solutions, and persistent volume management. To make my workflow
-                                    more efficient, I've also created custom `.bashrc` aliases that simplify common
-                                    kubectl commands. Through this project, I've gained deep insights into cloud-native
-                                    technologies and container orchestration, while building a valuable reference for my
-                                    ongoing Kubernetes work.</p>
-                                </p>
-
-                                <ul class="modal-popup__cat">
-                                    <li>Docker</li>
-                                    <li>Github</li>
-                                    <li>Kubernetes</li>
-                                </ul>
-                            </div>
-                            <a href="https://github.com/dhruvmistry2000/mykubernetes" target="_blank"
-                                class="modal-popup__details">GitHub Link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-06" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/Medusa2.jpg" alt="" height="85%" width="100%">
-
-                            <div class="modal-popup__desc">
-                                <h5> Medus-Storefront</h5>
-                                <p>This project showcases an automated CI/CD pipeline for deploying a Medusa e-commerce
-                                    platform to Amazon ECS (Elastic Container Service) using GitHub Actions and
-                                    Terraform. The pipeline ensures efficient and reliable deployment with
-                                    infrastructure
-                                    as code principles.</p>
-
-                                <ul class="modal-popup__cat">
-                                    <li>Javascript</li>
-                                    <li>Github</li>
-                                    <li>GitHub Actions</li>
-                                    <li>Terraform</li>
-                                </ul>
-                            </div>
-                            <a href="https://github.com/dhruvmistry2000/medus-storefront" target="_blank"
-                                class="modal-popup__details">GitHub Link</a>
-                        </div>
-                    </div> <!-- end modal -->
-                    <div id="modal-07" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/JSplusPY.png" alt="" height="85%" width="100%">
-
-                            <div class="modal-popup__desc">
-                                <h5> Web-Scraper</h5>
-                                <p>This project utilizes Puppeteer for website scraping, extracting data such as titles,
-                                    headings, links, and meta descriptions. The scraped data is stored in a
-                                    `scraped_data.json` file. A Python server (`server.py`) serves this data, accessible
-                                    at `http://localhost:5000`. The entire process is containerized using Docker for
-                                    seamless deployment and scalability.</p>
-
-                                <ul class="modal-popup__cat">
-                                    <li>Javascript</li>
-                                    <li>Github</li>
-                                    <li>Python</li>
-                                    <li>Docker</li>
-                                </ul>
-                            </div>
-                            <a href="https://github.com/dhruvmistry2000/Web-scraper" target="_blank"
-                                class="modal-popup__details">GitHub Link</a>
-                        </div>
-                    </div> <!-- end modal -->
-                    <div id="modal-08" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/strapi2.png" alt="" height="85%" width="100%">
-
-                            <div class="modal-popup__desc">
-                                <h5>Strapi-Deployment</h5>
-                                <p>This Project automates the deployment of a Strapi CMS using Docker, Terraform, and
-                                    GitHub Actions. The project leverages Amazon ECS for serverless container
-                                    orchestration, with various CI/CD workflows to automate the build, push, and
-                                    deployment of Docker images to AWS.</p>
-
-                                <ul class="modal-popup__cat">
-                                    <li>Javascript</li>
-                                    <li>Github</li>
-                                    <li>Nodejs</li>
-                                    <li>Strapi</li>
-                                    <li>AWS</li>
-                                    <li>Docker</li>
-                                </ul>
-                            </div>
-                            <a href="https://github.com/dhruvmistry2000/Strapi-Deployment" target="_blank"
-                                class="modal-popup__details">GitHub Link</a>
-                        </div>
-                    </div> <!-- end modal -->
-                    <div id="modal-05" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/kubernetes.png" alt="" height="85%" width="85%">
-
-                            <div class="modal-popup__desc">
-                                <h5> Kubepulse</h5>
-                                <p>Kubepulse is a lightweight, self-hosted Kubernetes monitoring dashboard. You install a small agent Helm chart into any cluster, and it securely pushes live data to a central dashboard over HTTPS. No inbound ports, no LoadBalancers, and no firewall changes are required on your clusters.</p>
-
-                                <ul class="modal-popup__cat">
-                                    <li>Kubernetes</li>
-                                    <li>Github</li>
-                                    <li>Helm</li>
-                                </ul>
-                            </div>
-                            <a href="https://github.com/dhruvmistry2000/kubepulse" target="_blank"
-                                class="modal-popup__details">GitHub Link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                </div> <!-- end works-portfolio -->
-            </section> <!-- end s-works -->
-
-
-            <!-- ### contact
-            ================================================== -->
-            <section id="contact" class="s-contact target-section">
-
-                <div class="row contact-top">
-                    <div class="column lg-12">
-                        <h2 class="text-pretitle">
-                            Get In Touch
-                        </h2>
-
-                        <p class="h1">
-                            I’m an aspiring DevOps Engineer passionate about cloud-native technologies, automation, and modern infrastructure practices. I enjoy connecting with professionals in the DevOps and cloud community to exchange ideas, gain insights, and continuously improve my skills. I’m always open to feedback, discussions, and collaboration on projects that involve cloud infrastructure, Kubernetes, CI/CD pipelines, and automation. If you have suggestions, insights, or would like to collaborate on open-source projects, feel free to reach out. I believe learning through collaboration and community involvement is key to growing in the DevOps ecosystem.
-                    </div>
-                </div> <!-- end contact-top -->
-
-                <div class="row contact-bottom">
-                    <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
-                        <h3 class="text-pretitle">Reach me at</h3>
-                        <p class="contact-links">
-                            <a href="mailto:dhruvmistry2000@gmail.com" class="mailtoui">dhruvmistry2000@gmail.com</a>
-                            <br>
-                        </p>
-                    </div>
-                    <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
-                        <h3 class="text-pretitle">Social</h3>
-                        <ul class="contact-social">
-                            <li><a target="_blank" href="https://github.com/dhruvmistry2000">Github</a></li>
-                            <li><a target="_blank" href="https://www.linkedin.com/in/dhruvmistry2000/">Linkedin</a></li>
-                            <li><a target="_blank" href="https://hub.docker.com/u/dhruvmistry200">DockerHub</a></li>
-                            <li><a target="_blank" href="https://www.instagram.com/xx_itzdhruv_xx/">Instagram</a></li>
-                            <li><a target="_blank" href="https://www.youtube.com/@LinuxMitra">Youtube-LinuxMitra</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="column lg-4 md-12 contact-block">
-                        <a href="mailto:dhruvmistry2000@gmail.com"
-                            class="mailtoui btn btn--medium u-fullwidth contact-btn">Say Hello.</a>
-                    </div>
-                </div> <!-- end contact-bottom -->
-
-            </section> <!-- end contact -->
-
-        </main> <!-- end s-content -->
-
-
-        <!-- ## footer
-        ================================================== -->
-        <footer class="s-footer">
-
-            <div class="row">
-                <div class="column ss-copyright">
-                    <span>© Copyright Dhruv 2026</span>
-                </div>
-
-                <div class="ss-go-top">
-                    <a class="smoothscroll" title="Back to Top" href="#top">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd"
-                            clip-rule="evenodd">
-                            <path
-                                d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z" />
-                        </svg>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="min-h-screen flex items-center pt-20 pb-16 px-6 lg:px-12 relative">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-up visible">
+                <h1 class="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                    Hi, I'm Dhruv Mistry
+                </h1>
+                <p class="font-mono text-xl md:text-2xl text-[#00ff88] mb-4 min-h-[2.5rem]">
+                    <span id="typewriter"></span><span class="cursor-blink"></span>
+                </p>
+                <p class="text-gray-400 text-lg mb-8 max-w-xl">
+                    DevOps Engineer with hands-on experience in AWS, GCP, Docker, Kubernetes, and CI/CD automation. Passionate about cloud-native technologies and building scalable infrastructure.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#00ff88] text-[#0a0a0f] font-mono font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(0,255,136,0.5)] transition-all">
+                        View My Work <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="Dhruv.pdf" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 border border-[#00ff88] text-[#00ff88] font-mono font-semibold rounded-lg hover:bg-[#00ff88]/10 transition-all">
+                        Download CV <i class="fas fa-download"></i>
                     </a>
                 </div>
             </div>
+            <div class="relative flex flex-col items-center lg:items-end gap-8">
+                <div class="relative">
+                    <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-[#00ff88] shadow-[0_0_40px_rgba(0,255,136,0.3)]">
+                        <img src="images/dhruv.jpg" alt="Dhruv Mistry" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-4 w-full max-w-sm font-mono text-sm hero-terminal">
+                    <div class="terminal-line mb-2"><span class="terminal-prompt">$</span> <span class="terminal-cmd">whoami  →  dhruv</span></div>
+                    <div class="terminal-line mb-2"><span class="terminal-prompt">$</span> <span class="terminal-cmd">kubectl delete pod mondays</span></div>
+                    <div class="terminal-line mb-2"><span class="terminal-prompt">$</span> <span class="terminal-cmd">git commit -m "fix: fixed the fix that fixed the fix"</span></div>
+                    <div class="terminal-line mb-2"><span class="terminal-prompt">$</span> <span class="terminal-cmd">docker run --rm -it my-life --restart=always</span></div>
+                    <div class="terminal-line mb-2"><span class="terminal-prompt">$</span> <span class="terminal-cmd">terraform destroy production  # just kidding</span></div>
+                    <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-cmd">df -h /skills  →  always expanding</span><span class="cursor-blink"></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        </footer> <!-- end s-footer -->
+    <!-- ABOUT -->
+    <section id="about" class="py-24 px-6 lg:px-12 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center lg:justify-start reveal">
+                    <div class="w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-[#00ff88] shadow-[0_0_40px_rgba(0,255,136,0.3)]">
+                        <img src="images/dhruv.jpg" alt="Dhruv Mistry" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="reveal">
+                    <p class="font-mono text-xs text-[#00ff88] uppercase tracking-widest mb-3">ABOUT ME</p>
+                    <h2 class="font-mono text-2xl md:text-3xl font-bold text-white mb-4">Building Infrastructure That Doesn't Break at 3AM</h2>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        I'm a DevOps Engineer based in India with hands-on experience across AWS, GCP, Docker, and Kubernetes. I've spent the last year working in production-grade Kubernetes environments — managing clusters, scaling workloads, handling zero-downtime deployments, and keeping things reliable when it matters most. I care deeply about clean automation, solid CI/CD pipelines, and infrastructure that teams can actually trust.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <div class="glass-card rounded-xl p-4 text-center stat-card reveal">
+                            <p class="stat-number font-mono text-2xl md:text-3xl font-bold text-[#00ff88]" data-target="1" data-suffix="+">0+</p>
+                            <p class="stat-label text-gray-500 text-xs mt-1">Year Production K8s</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-4 text-center stat-card reveal">
+                            <p class="stat-number font-mono text-2xl md:text-3xl font-bold text-[#00ff88]" data-target="8" data-suffix="+">0+</p>
+                            <p class="stat-label text-gray-500 text-xs mt-1">Open Source Projects</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-4 text-center stat-card reveal">
+                            <p class="stat-number font-mono text-2xl md:text-3xl font-bold text-[#00ff88]" data-target="3" data-suffix="">0</p>
+                            <p class="stat-label text-gray-500 text-xs mt-1">Companies Contributed To</p>
+                        </div>
+                    </div>
+                    <a href="Dhruv.pdf" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 border border-[#00ff88] text-[#00ff88] font-mono font-semibold rounded-lg hover:bg-[#00ff88]/10 transition-all">
+                        Download CV <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div> <!-- end -s-pagewrap -->
+    <!-- SKILLS / TECH STACK -->
+    <section id="skills" class="py-24 px-6 lg:px-12 relative">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-mono text-3xl md:text-4xl font-bold text-white mb-12 fade-in-up">Tech Stack</h2>
+            <div id="techstack-grid" class="tech-grid fade-in-up"></div>
+        </div>
+    </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24 px-6 lg:px-12 relative">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-mono text-3xl md:text-4xl font-bold text-white mb-16 fade-in-up">Experience</h2>
+            <div id="experience-timeline" class="space-y-0"></div>
+        </div>
+    </section>
 
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 px-6 lg:px-12 relative">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-mono text-3xl md:text-4xl font-bold text-white mb-4 fade-in-up">Recent Works</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl fade-in-up">Here are some of my favorite projects I have done lately. Feel free to check them out.</p>
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
 
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 px-6 lg:px-12 relative">
+        <div class="max-w-[600px] mx-auto">
+            <div class="glass-card rounded-xl p-8 text-center reveal">
+                <p class="font-mono text-xs text-[#00ff88] uppercase tracking-widest mb-3">CONTACT</p>
+                <h2 class="font-mono text-2xl md:text-3xl font-bold text-white mb-2">Let's Work Together</h2>
+                <p class="text-gray-400 text-sm mb-6">Open to DevOps roles, freelance infrastructure work, and open-source collaboration. I reply fast.</p>
+                <a href="mailto:dhruvmistry2000@gmail.com" class="font-mono text-[#00ff88] text-lg hover:underline block mb-6">dhruvmistry2000@gmail.com</a>
+                <div class="flex justify-center gap-4 mb-6">
+                    <a href="https://github.com/dhruvmistry2000" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-lg glass flex items-center justify-center text-gray-400 hover:text-[#00ff88] hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all"><i class="fab fa-github text-xl"></i></a>
+                    <a href="https://www.linkedin.com/in/dhruvmistry2000/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-lg glass flex items-center justify-center text-gray-400 hover:text-[#00ff88] hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all"><i class="fab fa-linkedin text-xl"></i></a>
+                    <a href="https://hub.docker.com/u/dhruvmistry200" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-lg glass flex items-center justify-center text-gray-400 hover:text-[#00ff88] hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all"><i class="fab fa-docker text-xl"></i></a>
+                    <a href="https://www.youtube.com/@LinuxMitra" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-lg glass flex items-center justify-center text-gray-400 hover:text-[#00ff88] hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all"><i class="fab fa-youtube text-xl"></i></a>
+                    <a href="https://www.instagram.com/xx_itzdhruv_xx/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-lg glass flex items-center justify-center text-gray-400 hover:text-[#00ff88] hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all"><i class="fab fa-instagram text-xl"></i></a>
+                </div>
+                <a href="mailto:dhruvmistry2000@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 bg-[#00ff88] text-[#0a0a0f] font-mono font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(0,255,136,0.5)] transition-all">
+                    Say Hello <i class="fas fa-paper-plane"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 border-t border-[rgba(255,255,255,0.08)]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <span class="text-gray-500 text-sm">© Copyright Dhruv 2026</span>
+            <a href="#hero" class="text-gray-400 hover:text-[#00ff88] transition-colors flex items-center gap-2">
+                <i class="fas fa-arrow-up"></i> Back to top
+            </a>
+        </div>
+    </footer>
+    <script src="js/main.js" defer></script>
 </body>
-
-
 </html>

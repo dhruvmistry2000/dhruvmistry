@@ -1,0 +1,100 @@
+[
+  {
+    "id": "mylinux",
+    "title": "Mylinux",
+    "description": "Minimal Arch Linux setup with BSPWM for a lightweight, tiling workflow. High customization and efficiency.",
+    "image": "images/portfolio/mylinux1.webp",
+    "tags": ["Linux", "Bash"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/mylinux"
+    },
+    "featured": true,
+    "visible": true
+  },
+  {
+    "id": "mybash",
+    "title": "Mybash",
+    "description": "Custom Bash scripts for automation, system monitoring, and environment setup. Well-documented for easy use.",
+    "image": "images/portfolio/mybash1.png",
+    "tags": ["Bash"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/mybash"
+    },
+    "featured": true,
+    "visible": true
+  },
+  {
+    "id": "terminal-doom",
+    "title": "Terminal Doom",
+    "description": "Play classic DOOM in your terminal via Docker. Alpine-based container with pre-configured DOOM.",
+    "image": "images/portfolio/doom.jpeg",
+    "tags": ["Docker", "GitHub", "DockerHub"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/mydocker/tree/main/terminal-doom-alpine",
+      "dockerhub": "https://hub.docker.com/r/dhruvmistry200/doom-terminal"
+    },
+    "featured": true,
+    "visible": true
+  },
+  {
+    "id": "mykubernetes",
+    "title": "Mykubernetes",
+    "description": "ConfigMaps, RBAC, monitoring, persistent volumes. Custom kubectl aliases for efficient workflow.",
+    "image": "images/portfolio/kubernetes.png",
+    "tags": ["Docker", "GitHub", "Kubernetes"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/mykubernetes"
+    },
+    "featured": true,
+    "visible": true
+  },
+  {
+    "id": "medus-storefront",
+    "title": "Medus-Storefront",
+    "description": "CI/CD pipeline for Medusa e-commerce on Amazon ECS using GitHub Actions and Terraform.",
+    "image": "images/portfolio/Medusa1.webp",
+    "tags": ["JavaScript", "GitHub Actions", "Terraform"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/medus-storefront"
+    },
+    "featured": true,
+    "visible": false
+  },
+  {
+    "id": "web-scraper",
+    "title": "Web Scraper",
+    "description": "Puppeteer scraping with Python server. Extracts titles, links, meta. Containerized with Docker.",
+    "image": "images/portfolio/JSplusPY.png",
+    "tags": ["JavaScript", "Python", "Docker"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/Web-scraper"
+    },
+    "featured": true,
+    "visible": false
+  },
+  {
+    "id": "strapi-deployment",
+    "title": "Strapi Deployment",
+    "description": "Automated Strapi CMS deployment with Docker, Terraform, GitHub Actions on Amazon ECS.",
+    "image": "images/portfolio/strapi1.png",
+    "tags": ["AWS", "Docker", "Terraform", "GitHub Actions"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/Strapi-Deployment"
+    },
+    "featured": true,
+    "visible": false
+  },
+  {
+    "id": "kubepulse",
+    "title": "Kubepulse",
+    "description": "Lightweight self-hosted K8s monitoring dashboard. Agent pushes data over HTTPS, no inbound ports.",
+    "image": "images/portfolio/kubernetes.png",
+    "tags": ["Kubernetes", "Helm", "GitHub"],
+    "links": {
+      "github": "https://github.com/dhruvmistry2000/kubepulse",
+      "dockerhub": "https://hub.docker.com/r/dhruvmistry200/kubepulse-agent"
+    },
+    "featured": true,
+    "visible": true
+  }
+]
