@@ -1,0 +1,47 @@
+[
+  {
+    "id": "oneknotone",
+    "company": "Oneknotone Technologies LLP",
+    "visible": true,
+    "roles": [
+      {
+        "title": "AWS Engineer",
+        "from": "May 2024",
+        "to": "Feb 2025",
+        "promoted": false
+      }
+    ]
+  },
+  {
+    "id": "pearlthoughts",
+    "company": "Pearlthoughts",
+    "visible": true,
+    "roles": [
+      {
+        "title": "DevOps Engineer Intern",
+        "from": "May 2025",
+        "to": "Aug 2025",
+        "promoted": false
+      },
+      {
+        "title": "DevOps Engineer",
+        "from": "July 2025",
+        "to": "Oct 2025",
+        "promoted": true
+      }
+    ]
+  },
+  {
+    "id": "cleanstart",
+    "company": "Cleanstart",
+    "visible": true,
+    "roles": [
+      {
+        "title": "Associate DevOps Engineer",
+        "from": "Oct 2025",
+        "to": "Present",
+        "promoted": false
+      }
+    ]
+  }
+]

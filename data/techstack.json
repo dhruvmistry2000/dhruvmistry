@@ -1,0 +1,92 @@
+[
+  {
+    "id": "linux",
+    "name": "Linux",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+    "visible": true
+  },
+  {
+    "id": "aws",
+    "name": "AWS",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+    "visible": true
+  },
+  {
+    "id": "gcp",
+    "name": "GCP",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    "visible": true
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    "visible": true
+  },
+  {
+    "id": "kubernetes",
+    "name": "Kubernetes",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    "visible": true
+  },
+  {
+    "id": "helm",
+    "name": "Helm",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/helm/helm-original.svg",
+    "visible": true
+  },
+  {
+    "id": "terraform",
+    "name": "Terraform",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    "visible": true
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    "visible": true
+  },
+  {
+    "id": "bash",
+    "name": "Bash",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
+    "visible": true
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    "visible": true
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    "visible": true
+  },
+  {
+    "id": "githubactions",
+    "name": "GitHub Actions",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg",
+    "visible": true
+  },
+  {
+    "id": "jenkins",
+    "name": "Jenkins",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+    "visible": true
+  },
+  {
+    "id": "prometheus",
+    "name": "Prometheus",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
+    "visible": true
+  },
+  {
+    "id": "grafana",
+    "name": "Grafana",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg",
+    "visible": true
+  }
+]
