@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Dhruv Mistry — Myhyprland
+# https://github.com/dhruvmistry2000/myhyprland
+set -e
+exec bash <(curl -sSL "https://raw.githubusercontent.com/dhruvmistry2000/myhyprland/master/setup.sh")
