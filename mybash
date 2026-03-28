@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Dhruv Mistry — Mybash
+# https://github.com/dhruvmistry2000/mybash
+set -e
+exec bash <(curl -sSL "https://raw.githubusercontent.com/dhruvmistry2000/mybash/master/setup.sh")

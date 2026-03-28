@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script viewer | Dhruv Mistry</title>
+    <link rel="icon" href="images/letter-d.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased min-h-screen">
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 glass py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
+            <a href="index.html" class="font-mono text-gray-400 hover:text-[#00ff88] transition-colors">← Back to Portfolio</a>
+            <a href="scripts.html" class="font-mono text-gray-400 hover:text-[#00ff88] transition-colors">All scripts</a>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-16 px-6 lg:px-12 max-w-5xl mx-auto relative z-[1]">
+        <div id="viewer-main"></div>
+    </main>
+
+    <script>
+        function escapeHtml(str) {
+            if (str == null) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function copyCurl(cmd, btn) {
+            navigator.clipboard.writeText(cmd).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = 'Copy curl'; }, 2000);
+            }).catch(() => {});
+        }
+
+        async function initViewer() {
+            const el = document.getElementById('viewer-main');
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug');
+
+            let routes = [];
+            try {
+                const res = await fetch('data/routes.json');
+                if (!res.ok) throw new Error('bad response');
+                const data = await res.json();
+                routes = Array.isArray(data) ? data : [];
+            } catch {
+                el.innerHTML = '<p class="text-center text-gray-400 py-16">No scripts available yet.</p>';
+                return;
+            }
+
+            const visible = routes.filter(r => r.visible === true);
+            if (visible.length === 0) {
+                el.innerHTML = '<p class="text-center text-gray-400 py-16">No scripts available yet.</p>';
+                return;
+            }
+
+            if (!slug) {
+                el.innerHTML = '<p class="text-center text-gray-400 py-16">Pick a script from <a href="scripts.html" class="text-[#00ff88] hover:underline">all scripts</a>.</p>';
+                return;
+            }
+
+            const route = visible.find(r => r.slug === slug);
+            if (!route) {
+                el.innerHTML = '<p class="text-center text-gray-400 py-16">Script not found. <a href="scripts.html" class="text-[#00ff88] hover:underline">Browse all scripts</a>.</p>';
+                return;
+            }
+
+            el.innerHTML = `
+                <div class="mb-6">
+                    <span class="script-lang-badge">${escapeHtml(route.language)}</span>
+                    <h1 class="font-mono text-2xl md:text-3xl font-bold text-white mt-4 mb-2">${escapeHtml(route.title)}</h1>
+                    <p class="text-gray-400 text-sm mb-4">${escapeHtml(route.description)}</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="${escapeHtml(route.github)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[#00ff88] hover:underline text-sm font-mono">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                ${route.type === 'bash' ? `
+                <div class="script-curl mb-6">
+                    <code>${escapeHtml(route.curl_cmd)}</code>
+                </div>
+                <button type="button" id="viewer-copy-curl" class="btn-primary mb-8">Copy curl</button>
+                ` : ''}
+                <div class="glass-card rounded-xl p-4 overflow-hidden">
+                    <p class="font-mono text-xs text-[#00ff88] uppercase tracking-widest mb-3">Source</p>
+                    <pre id="viewer-code" class="text-xs text-gray-300 font-mono whitespace-pre-wrap break-words max-h-[70vh] overflow-auto">Loading…</pre>
+                </div>
+            `;
+
+            const pre = document.getElementById('viewer-code');
+            try {
+                const rawRes = await fetch(route.raw);
+                if (!rawRes.ok) throw new Error('fetch failed');
+                const text = await rawRes.text();
+                pre.textContent = text;
+            } catch {
+                pre.textContent = 'Could not load script source. Open the raw URL from GitHub instead.';
+            }
+
+            const copyBtn = document.getElementById('viewer-copy-curl');
+            if (copyBtn && route.curl_cmd) {
+                copyBtn.addEventListener('click', () => copyCurl(route.curl_cmd, copyBtn));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initViewer);
+    </script>
+</body>
+</html>

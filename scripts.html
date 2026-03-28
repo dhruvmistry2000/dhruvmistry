@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts | Dhruv Mistry</title>
+    <meta name="description" content="Browse install scripts and automation from Dhruv Mistry">
+    <link rel="icon" href="images/letter-d.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased min-h-screen">
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 glass py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
+            <a href="index.html" class="font-mono text-gray-400 hover:text-[#00ff88] transition-colors">← Back to Portfolio</a>
+            <span class="font-mono text-[#00ff88] text-sm">All scripts</span>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-16 px-6 lg:px-12 max-w-7xl mx-auto relative z-[1]">
+        <h1 class="font-mono text-3xl md:text-4xl font-bold text-white mb-2">Scripts</h1>
+        <p class="text-gray-400 text-sm max-w-2xl mb-2">Install helpers and dotfile bootstraps. Each card links to a readable copy of the source.</p>
+        <div id="scripts-grid" class="scripts-grid"></div>
+    </main>
+
+    <script>
+        let loadedRoutes = [];
+
+        function escapeHtml(str) {
+            if (str == null) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function copyCurlByIndex(index, btn) {
+            const cmd = loadedRoutes[index] && loadedRoutes[index].curl_cmd;
+            if (!cmd) return;
+            navigator.clipboard.writeText(cmd).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = 'Copy curl'; }, 2000);
+            }).catch(() => {});
+        }
+
+        async function loadScripts() {
+            const grid = document.getElementById('scripts-grid');
+            let routes = [];
+            try {
+                const res = await fetch('data/routes.json');
+                if (!res.ok) throw new Error('Fetch failed');
+                const data = await res.json();
+                routes = Array.isArray(data) ? data : [];
+            } catch {
+                grid.innerHTML = '<p class="text-center text-gray-400 py-16 col-span-full">No scripts available yet.</p>';
+                return;
+            }
+
+            const visible = routes.filter(r => r.visible === true);
+            if (visible.length === 0) {
+                grid.innerHTML = '<p class="text-center text-gray-400 py-16 col-span-full">No scripts available yet.</p>';
+                return;
+            }
+
+            loadedRoutes = visible;
+            grid.innerHTML = visible.map((r, i) => `
+    <div class="script-card">
+      <div class="script-card-header">
+        <span class="script-lang-badge">${escapeHtml(r.language)}</span>
+      </div>
+      <h3 class="script-title">${escapeHtml(r.title)}</h3>
+      <p class="script-desc">${escapeHtml(r.description)}</p>
+      ${r.type === 'bash' ? `
+      <div class="script-curl">
+        <code>${escapeHtml(r.curl_cmd)}</code>
+      </div>` : ''}
+      <div class="script-card-actions">
+        <a href="viewer.html?slug=${encodeURIComponent(r.slug)}" class="btn-outline">
+          View Script
+        </a>
+        ${r.type === 'bash' ? `
+        <button type="button" class="btn-primary" data-curl-index="${i}">
+          Copy curl
+        </button>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+            grid.querySelectorAll('[data-curl-index]').forEach(btn => {
+                const idx = parseInt(btn.getAttribute('data-curl-index'), 10);
+                btn.addEventListener('click', () => copyCurlByIndex(idx, btn));
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadScripts);
+    </script>
+</body>
+</html>
