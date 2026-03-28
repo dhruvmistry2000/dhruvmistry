@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "mybash",
+    "title": "Mybash",
+    "description": "Custom Bash scripts for productivity and automation",
+    "github": "https://github.com/dhruvmistry2000/mybash",
+    "raw": "https://raw.githubusercontent.com/dhruvmistry2000/mybash/master/setup.sh",
+    "language": "bash",
+    "type": "bash",
+    "curl_cmd": "curl -sSL https://dhruvmistry2000.github.io/dhruvmistry/mybash | bash",
+    "visible": true
+  },
+  {
+    "slug": "mylinux",
+    "title": "Mylinux",
+    "description": "My Linux setup with BSPWM and minimal dotfiles",
+    "github": "https://github.com/dhruvmistry2000/mylinux",
+    "raw": "https://raw.githubusercontent.com/dhruvmistry2000/mylinux/master/setup.sh",
+    "language": "bash",
+    "type": "bash",
+    "curl_cmd": "curl -sSL https://dhruvmistry2000.github.io/dhruvmistry/mylinux | bash",
+    "visible": true
+  },
+  {
+    "slug": "myhyprland",
+    "title": "Myhyprland",
+    "description": "My Linux setup with Hyprland and minimal dotfiles",
+    "github": "https://github.com/dhruvmistry2000/myhyprland",
+    "raw": "https://raw.githubusercontent.com/dhruvmistry2000/myhyprland/master/setup.sh",
+    "language": "bash",
+    "type": "bash",
+    "curl_cmd": "curl -sSL https://dhruvmistry2000.github.io/dhruvmistry/myhyprland | bash",
+    "visible": true
+  }
+]

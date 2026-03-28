@@ -63,6 +63,56 @@
 
         let revealObserver = null;
 
+        function initBgIcons() {
+            const icons = [
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/helm/helm-original.svg',
+            ];
+
+            const container = document.querySelector('.hero-bg-icons');
+            if (!container) return;
+
+            icons.forEach((src, i) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = '';
+                img.draggable = false;
+
+                const top  = Math.random() * 90;   // 0–90% vertically
+                const left = Math.random() * 95;   // 0–95% horizontally
+
+                const size = 48 + Math.floor(Math.random() * 32); // 48px–80px
+
+                const duration = 18 + Math.floor(Math.random() * 20); // 18s–38s
+                const delay    = -(Math.floor(Math.random() * 20));   // negative delay = starts mid-cycle
+
+                img.style.cssText = `
+      position: absolute;
+      top: ${top}%;
+      left: ${left}%;
+      width: ${size}px;
+      height: ${size}px;
+      opacity: 0.045;
+      filter: grayscale(100%);
+      animation: bgIconSpin ${duration}s linear ${delay}s infinite;
+      pointer-events: none;
+      user-select: none;
+    `;
+
+                container.appendChild(img);
+            });
+        }
+
         // Projects (dynamic from data/projects.json)
         function buildProjectCard(p) {
             const primaryUrl = (p.links && (p.links.dockerhub || p.links.github)) || '#';
@@ -290,6 +340,7 @@
                 document.querySelectorAll('.stat-card').forEach(el => statsObserver.observe(el));
             }
 
+            initBgIcons();
             renderProjects();
             renderTechStack();
             renderExperience();
