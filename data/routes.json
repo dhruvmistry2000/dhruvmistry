@@ -31,5 +31,16 @@
     "type": "bash",
     "curl_cmd": "curl -sSL https://dhruvmistry2000.github.io/dhruvmistry/myhyprland | bash",
     "visible": true
+  },
+  {
+    "slug": "ArchMitra",
+    "title": "Archmitra",
+    "description": "Install Arch using one single Script",
+    "github": "https://github.com/dhruvmistry2000/archmitra",
+    "raw": "https://raw.githubusercontent.com/dhruvmistry2000/archmitra/master/setup.sh",
+    "language": "bash",
+    "type": "bash",
+    "curl_cmd": "curl -sSL https://dhruvmistry2000.github.io/dhruvmistry/archmitra | bash",
+    "visible": true
   }
 ]

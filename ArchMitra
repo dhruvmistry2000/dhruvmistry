@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Dhruv Mistry — Archmitra
+# https://github.com/dhruvmistry2000/archmitra
+set -e
+exec bash <(curl -sSL "https://raw.githubusercontent.com/dhruvmistry2000/archmitra/master/setup.sh")
