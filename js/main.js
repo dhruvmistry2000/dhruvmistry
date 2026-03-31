@@ -14,7 +14,7 @@
         }
 
         // Typewriter effect
-        const roles = ['DevOps Engineer', 'kubectl Enthusiast', 'Cloud Infrastructure Builder', 'Linux Tinkerer', 'Containerization Nerd', 'Hardware Hobbyist'];
+        const roles = ['DevOps Engineer', 'kubectl Enthusiast', 'Cloud Infrastructure Builder', 'Linux Tinkerer', 'Containerization Nerd', 'Hardware Hobbyist','Open Source Contributor','AI Explorer'];
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
